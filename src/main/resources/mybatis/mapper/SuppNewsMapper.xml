@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kj.dao.SuppNewsDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kj.model.SuppNews">
+        <id column="id" property="id" />
+        <result column="author_id" property="authorId" />
+        <result column="image_id" property="imageId" />
+        <result column="title" property="title" />
+        <result column="profile" property="profile" />
+        <result column="content" property="content" />
+        <result column="version" property="version" />
+        <result column="order" property="order" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,author_id as authorId,image_id as imageId,title,profile,content,version,order,create_time AS createTime ,modify_time AS modifyTime
+    </sql>
+
+
+
+
+
+</mapper>

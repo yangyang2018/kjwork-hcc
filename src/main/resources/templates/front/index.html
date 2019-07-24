@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="front/layout/layoutFirst :: layoutFirst(1,~{::title},~{},~{},~{::section},~{})">
+	<head>
+		<title>首页</title>
+	</head>
+	<body>
+		<section>
+
+			<div class="colorlib-featured">
+				<div class="row animate-box">
+					<div class="featured-wrap">
+						<div class="owl-carousel">
+							<div class="item" th:each="circleItem : ${circleImages}">
+								<div class="col-md-8 col-md-offset-2">
+									<div class="featured-entry">
+										<img class="img-responsive" th:src="@{${session.appServerUrl}+${circleItem.path}}" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="colorlib-services colorlib-bg-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+							<h2>我们的服务</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 text-center animate-box" th:each="serviceItem,sStatus : ${topThreeServices}">
+							<div class="services">
+								<span class="icon" th:switch="${sStatus.index}">
+									<i th:case="0" class="icon-browser"></i>
+									<i th:case="1" class="icon-download"></i>
+									<i th:case="2" class="icon-layers"></i>
+								</span>
+								<div class="desc">
+									<h3 th:text="${serviceItem.title}"></h3>
+									<p th:text="${serviceItem.content}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 text-center animate-box">
+						</div>
+						<div class="col-md-4 text-center animate-box">
+							<p><a th:href="@{${session.appServerUrl}+'front/services.action'}" class="btn btn-primary btn-outline with-arrow">查看更多<i class="icon-arrow-right3"></i></a></p>
+						</div>
+						</div>
+				</div>
+			</div>
+
+			<div class="colorlib-work-featured colorlib-bg-white">
+				<div class="container">
+					<div class="row mobile-wrap">
+						<div class="col-md-5 animate-box">
+							<div class="mobile-img" th:style="@{'background-image:url('+${session.appServerUrl}+${company.suppImage.path}+');'}"></div>
+						</div>
+						<div class="col-md-7 animate-box">
+							<div class="desc">
+								<h2>关于我们</h2>
+								<div class="features">
+									<span class="icon"><i class="icon-lightbulb"></i></span>
+									<div class="f-desc">
+										<p th:text="${company.profile}"></p>
+									</div>
+								</div>
+								<p><a th:href="@{${session.appServerUrl}+'front/about.action'}" class="btn btn-primary btn-outline with-arrow">查看更多 <i class="icon-arrow-right3"></i></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="colorlib-blog">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+							<h2>新闻中心</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 animate-box" th:each="newsItem,newsStatus : ${news}">
+							<article>
+								<h2 th:text="${newsItem.title}"></h2>
+								<p class="admin"><span th:text="${#dates.format(newsItem.createTime, 'yyyy-MM-dd')}"></span></p>
+								<p th:text="${newsItem.profile}"></p>
+								<p class="author-wrap"><a href="#" class="author-img" style="background-image: url(images/person1.jpg);"></a> <a href="javaScript:;" class="author">管理员</a></p>
+							</article>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+						</div>
+						<div class="col-md-4">
+							<p><a th:href="@{${session.appServerUrl}+'front/news.action'}" class="btn btn-primary btn-outline with-arrow">查看更多<i class="icon-arrow-right3"></i></a></p>
+						</div>
+						</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>
+

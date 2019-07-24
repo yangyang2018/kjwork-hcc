@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="front/layout/layoutFirst :: layoutFirst(3,~{::title},~{},~{},~{::section},~{})">
+	<head>
+		<title>新闻中心</title>
+	</head>
+	<body>
+		<section>
+			<div class="colorlib-work">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 animate-box" th:each="item,itemState : ${news}">
+							<div class="work-grid">
+								<a href="javaScript:;" class="work-img" th:style="@{'background-image:url('+${session.appServerUrl}+${item.suppImage.path}+');'}">
+									<span class="icon"><i class="icon-plus2"></i></span>
+								</a>
+								<div class="desc">
+									<h2><a href="javaScript:;" th:text="${item.title}"></a></h2>
+									<p th:text="${item.profile}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="pagination">
+								<li th:class="${pageIndex<=1}?'disabled':''"><a th:href="@{'news.action?pageIndex=' + ${pageIndex-1}}">&laquo;</a></li>
+								<li th:if="${pageIndex-3 >=1}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex-3}}" th:text="${pageIndex -3}" >1</a></li>
+								<li th:if="${pageIndex-2 >=1}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex-2}}" th:text="${pageIndex -2}" >1</a></li>
+								<li th:if="${pageIndex-1 >=1}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex-1}}" th:text="${pageIndex -1}" >1</a></li>
+								<li class="active"><a href="#" th:text="${pageIndex}"></a></li>
+								<li th:if="${pageIndex+1 <=totalPage}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex+1}}" th:text="${pageIndex +1}" >1</a></li>
+								<li th:if="${pageIndex+2 <=totalPage}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex+2}}" th:text="${pageIndex +2}" >1</a></li>
+								<li th:if="${pageIndex+3 <=totalPage}" ><a th:href="@{'news.action?pageIndex=' + ${pageIndex+3}}" th:text="${pageIndex +3}" >1</a></li>
+								<li th:class="${pageIndex>=totalPage}?'disabled':''"><a th:href="@{'news.action?pageIndex=' + ${pageIndex+1}}">&raquo;</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+

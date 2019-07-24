@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment = "layoutFirst(navIndex,title,links,styles,content,scripts)">
+	<head >
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title th:replace="${title}">杭州达顺废旧金属回收有限公司</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="" />
+	<meta name="author" content="shark" />
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/animate.css'}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/icomoon.css'}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/bootstrap.css'}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/magnific-popup.css'}">
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/owl.carousel.min.css'}">
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/owl.theme.default.min.css'}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" th:href="@{${session.appServerUrl}+'front/css/style.css'}">
+
+	<!-- Modernizr JS -->
+	<script th:src="@{${session.appServerUrl}+'front/js/modernizr-2.6.2.min.js'}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script th:src="@{${session.appServerUrl}+'front/js/respond.min.js'}"></script>
+	<![endif]-->
+	<!--/* Per-page placeholder for additional links */-->
+	<th:block th:replace="${links}" />
+	<!--/* Per-page placeholder for additional styles */-->
+	<th:block th:replace="${styles}" />
+	</head>
+	<body>
+	<input type="hidden" id="appServerUrl" th:value="${session.appServerUrl}"/>
+
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+		<nav class="colorlib-nav" role="navigation">
+			<div class="top-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div id="colorlib-logo"><a th:href="@{${session.appServerUrl}+'front/index.action'}" th:text="${company.name}"></a></div>
+						</div>
+						<div class="col-md-8 text-right menu-1">
+							<ul>
+								<li th:class="${navIndex==1}?'active':''"><a th:href="@{${session.appServerUrl}+'front/index.action'}">首页</a></li>
+
+								<li th:class="${navIndex==2}?'active':''"><a th:href="@{${session.appServerUrl}+'front/services.action'}">业务范围</a></li>
+								<!--<li class="has-dropdown">
+									<a href="@{${session.appServerUrl}+'front/work.action'}">Works</a>
+									<ul class="dropdown">
+										<li><a href="@{${session.appServerUrl}+'front/work-grid.action'}">Works grid with text</a></li>
+										<li><a href="@{${session.appServerUrl}+'front/work-grid-without-text.action'}">Works grid w/o text</a></li>
+									</ul>
+								</li>-->
+								<!--<li><a href="@{${session.appServerUrl}+'front/work-grid.action'}">新闻中心</a></li>-->
+								<li th:class="${navIndex==3}?'active':''"><a th:href="@{${session.appServerUrl}+'front/news.action'}">新闻中心</a></li>
+								<li th:class="${navIndex==4}?'active':''"><a th:href="@{${session.appServerUrl}+'front/about.action'}">关于我们</a></li>
+								<li th:class="${navIndex==5}?'active':''"><a th:href="@{${session.appServerUrl}+'front/contact.action'}">联系我们</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+
+		<section id="home" class="video-hero" style="height: 700px; background-image: url(images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;" data-section="home">
+		    <div class="overlay"></div>
+			<a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=vqqt5p0q-eU',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
+			<div class="display-t text-center">
+				<div class="display-tc">
+					<div class="container">
+						<div class="col-md-12 col-md-offset-0">
+							<div class="animate-box">
+								<h2>风雨无阻、砥砺前行</h2>
+								<p>提供高质量的服务</p>
+								<p><a th:href="@{${session.appServerUrl}+'front/contact.action'}" class="btn btn-primary btn-lg btn-custom">联系我们</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div th:replace="${content}">
+			<p>欢迎你的到来</p>
+		</div>
+
+		<footer id="colorlib-footer">
+			<div class="container">
+				<div class="row row-pb-md">
+					<div class="col-md-3 colorlib-widget">
+						<h4 th:text="|关于${company.name}|"></h4>
+						<p><span th:text="${company.simplesDic.remark}"></span></p>
+							<!--<ul class="colorlib-social-icons">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-linkedin"></i></a></li>
+								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							</ul>-->
+						</p>
+					</div>
+					<div class="col-md-3 colorlib-widget">
+						<h4> 内容信息</h4>
+						<p>
+							<ul class="colorlib-footer-links">
+								<li><a href="javaScript:;"><i class="icon-check"></i> 网站首页</a></li>
+								<li><a href="javaScript:;"><i class="icon-check"></i> 业务范围</a></li>
+								<li><a href="javaScript:;"><i class="icon-check"></i> 新闻中心</a></li>
+								<li><a href="javaScript:;"><i class="icon-check"></i> 关于我们</a></li>
+								<li><a href="javaScript:;"><i class="icon-check"></i> 联系我们</a></li>
+							</ul>
+						</p>
+					</div>
+
+					<!--<div class="col-md-3 colorlib-widget">
+						<h4>Recent Blog</h4>
+						<div class="f-blog">
+							<a href="blog.html" class="blog-img" style="background-image: url(/front/images/blog-1.jpg);">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">Photoshoot Technique</a></h2>
+								<p class="admin"><span>30 March 2018</span></p>
+							</div>
+						</div>
+						<div class="f-blog">
+							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">Camera Lens Shoot</a></h2>
+								<p class="admin"><span>30 March 2018</span></p>
+							</div>
+						</div>
+						<div class="f-blog">
+							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+							</a>
+							<div class="desc">
+								<h2><a href="blog.html">Imahe the biggest photography studio</a></h2>
+								<p class="admin"><span>30 March 2018</span></p>
+							</div>
+						</div>
+					</div>-->
+
+					<div class="col-md-3 colorlib-widget">
+						<h4>联系信息</h4>
+						<ul class="colorlib-footer-links">
+							<li th:text="${company.addressDic.remark}"></li>
+							<li><span><i class="icon-phone"></i></span><a th:href="@{'tel://'+${company.phoneDic.remark}}" th:text="${company.phoneDic.remark}"></a></li>
+							<li><span><i class="icon-envelope"></i></span><a th:href="@{'mailto:'+${company.emailDic.remark}}" th:text="${company.emailDic.remark}"></a></li>
+							<li><span><i class="icon-location4"></i></span><a th:href="${company.websiteDic.remark}" th:text="${company.websiteDic.remark}"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="copy">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p>
+								版权所有 &copy;2019 <a href="#" target="_blank" th:text="${company.name}"></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.min.js'}"></script>
+	<!-- jQuery Easing -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.easing.1.3.js'}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{${session.appServerUrl}+'front/js/bootstrap.min.js'}"></script>
+	<!-- Waypoints -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.waypoints.min.js'}"></script>
+	<!-- Stellar Parallax -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.stellar.min.js'}"></script>
+	<!-- YTPlayer -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.mb.YTPlayer.min.js'}"></script>
+	<!-- Owl carousel -->
+	<script th:src="@{${session.appServerUrl}+'front/js/owl.carousel.min.js'}"></script>
+	<!-- Magnific Popup -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.magnific-popup.min.js'}"></script>
+	<script th:src="@{${session.appServerUrl}+'front/js/magnific-popup-options.js'}"></script>
+	<!-- Counters -->
+	<script th:src="@{${session.appServerUrl}+'front/js/jquery.countTo.js'}"></script>
+	<!-- Main -->
+	<script th:src="@{${session.appServerUrl}+'front/js/main.js'}"></script>
+
+	<!-- Per scripts for custom pages-->
+	<th:block th:replace="${scripts}" />
+	</body>
+</html>
+
