@@ -5,7 +5,6 @@
 	</head>
 	<body>
 		<section>
-
 			<div class="colorlib-featured">
 				<div class="row animate-box">
 					<div class="featured-wrap">
@@ -58,7 +57,7 @@
 				<div class="container">
 					<div class="row mobile-wrap">
 						<div class="col-md-5 animate-box">
-							<div class="mobile-img" th:style="@{'background-image:url('+${session.appServerUrl}+${company.suppImage.path}+');'}"></div>
+							<div class="mobile-img" th:style="@{'background-image:url('+${session.appServerUrl}+${company.imagePath}+');'}"></div>
 						</div>
 						<div class="col-md-7 animate-box">
 							<div class="desc">
@@ -86,10 +85,12 @@
 					<div class="row">
 						<div class="col-md-4 animate-box" th:each="newsItem,newsStatus : ${news}">
 							<article>
-								<h2 th:text="${newsItem.title}"></h2>
+
+								<h2><a th:href="@{${session.appServerUrl}+'front/news_detail.action?id='+${newsItem.id}}" th:text="${newsItem.title}"></a></h2>
 								<p class="admin"><span th:text="${#dates.format(newsItem.createTime, 'yyyy-MM-dd')}"></span></p>
-								<p th:text="${newsItem.profile}"></p>
-								<p class="author-wrap"><a href="#" class="author-img" style="background-image: url(images/person1.jpg);"></a> <a href="javaScript:;" class="author">管理员</a></p>
+								<p th:if="${#strings.length(newsItem.content) >=150}" th:text="${#strings.substring(newsItem.content,0,150)}" style="height: 150px;overflow: hidden;"></p>
+								<p th:if="${#strings.length(newsItem.content) < 150}" th:text="${newsItem.content}" style="height: 150px;overflow: hidden;"></p>
+								<p class="author-wrap"><a href="javaScript:;" class="author-img" style="background-image: url(images/person1.jpg);"></a> <a href="javaScript:;" class="author">管理员</a></p>
 							</article>
 						</div>
 					</div>

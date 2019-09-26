@@ -23,6 +23,10 @@ public enum DictionaryEnum {
         return code;
     }
 
+    public String stringCode() {
+        return String.valueOf(code);
+    }
+
     public String getTag() {
         return tag;
     }

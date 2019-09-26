@@ -23,6 +23,8 @@ public class SuppMessage extends BaseSuppDO implements Serializable{
     private String phone;
     @TableField
     private String email;
+    @TableField
+    private Integer status;
     @TableField()
     private String subject;
     @TableField()
@@ -74,5 +76,13 @@ public class SuppMessage extends BaseSuppDO implements Serializable{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

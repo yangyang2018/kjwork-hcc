@@ -16,7 +16,9 @@ import com.kj.service.SuppNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,9 +37,6 @@ import java.util.Map;
 public class NewsController {
 
     @Autowired
-    SuppImageService suppImageService;
-
-    @Autowired
     SuppNewsService suppNewsService;
 
     @RequestMapping("/news.action")
@@ -54,18 +53,15 @@ public class NewsController {
         modelMap.addAttribute("news",records);
         modelMap.addAttribute("pageIndex",page.getCurrent());
         modelMap.addAttribute("totalPage",page.getPages());
-
-        //图片信息
-        Map<Integer,SuppImage> map = new HashMap<>();
-        List<SuppImage> suppImages = suppImageService.selectList(new EntityWrapper<SuppImage>().eq("type", ImageEnum.NEWSHOME.getCode()));
-        for (SuppImage suppImage : suppImages) {
-            map.put(suppImage.getId(),suppImage);
-        }
-        for (SuppNews record : records) {
-            if (map.containsKey(record.getImageId())) {
-                record.setSuppImage(map.get(record.getImageId()));
-            }
-        }
         return "front/news";
+    }
+
+    @RequestMapping("/news_detail.action")
+    public String servicesDetail(ModelMap modelMap,@RequestParam("id") String id){
+        Assert.hasText(id,"参数不准确");
+        //新闻的详细页信息
+        SuppNews suppNews = suppNewsService.selectById(Integer.valueOf(id));
+        modelMap.put("news",suppNews);
+        return "front/news_detail";
     }
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="layoutFooter(scripts)">
+  <!-- Bootstrap core JavaScript-->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/jquery/jquery.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/jquery-easing/jquery.easing.min.js'}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script th:src="@{${session.appServerUrl}+'bops/js/sb-admin-2.min.js'}"></script>
+
+  <!-- Per scripts for custom pages-->
+  <th:block th:replace="${scripts}" />
+
+  <input type="hidden" th:value="${session.appServerUrl}" id="appServer"/>
+</div>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kj.dao.SuppMessageDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kj.model.SuppMessage">
+        <id column="id" property="id" />
+        <result column="firstname" property="firstname" />
+        <result column="lastname" property="lastname" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="subject" property="subject" />
+        <result column="message" property="message" />
+        <result column="status" property="status" />
+        <result column="version" property="version" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,firstname,lastname,phone,email,subject,message,status,version,create_time,modify_time
+    </sql>
+
+
+    <update id="updateStatus" parameterType="integer">
+        UPDATE supp_message SET status = '1' WHERE id = #{id}
+
+    </update>
+
+
+
+
+</mapper>

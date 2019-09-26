@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="bops/layout/layoutFirst :: layoutFirst(~{::title},~{::link},~{},~{::section},~{::script})">
+
+<head>
+  <title>杭州顺达后台管理系统</title>
+  <!-- Custom styles for this page -->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.css'}" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">服务信息</h1>
+      <p class="mb-4">可以编辑公司提供的服务信息</p>
+        <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">服务列表</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>关键字</th>
+                <th>描述</th>
+                <th>排序</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item,itemState : ${services}">
+                <td><input  type="text" class="service-id form-control" disabled th:value="${item.id}"></td>
+                <td><input  type="text" class="service-title form-control" disabled th:value="${item.title}"></td>
+                <td><input  type="text" class="service-content form-control" disabled th:value="${item.content}"></td>
+                <td><input  type="number" class="service-order form-control" disabled th:value="${item.order}"></td>
+                <td>
+                  <a href="javascript:;" class="btn btn-primary btn-edit">编辑</a>
+                  <a href="javascript:;" class="btn btn-success btn-save">保存</a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Page level plugins -->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/chart.js/Chart.min.js'}"></script>
+  <!-- Page level custom scripts -->
+
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/jquery.dataTables.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.js'}"></script>
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/company-service.js'}"></script>
+
+</body>
+</html>

@@ -40,11 +40,6 @@ public class FrontControllerAspect {
 
     private Logger logger = LoggerFactory.getLogger(FrontControllerAspect.class);
 
-
-
-    @Autowired
-    private SuppImageService suppImageService;
-
     @Autowired
     private SuppCompanyService suppCompanyService;
 
@@ -57,7 +52,7 @@ public class FrontControllerAspect {
 
 
 
-    @Pointcut(value = "execution(* com.kj.front.controller..*.*(..))")
+    @Pointcut(value = "execution(* com.kj.*.controller..*.*(..))")
     public void frontDiv(){
 
     }
@@ -118,13 +113,9 @@ public class FrontControllerAspect {
 
         //首页公司信息
         SuppCompany suppCompany = suppCompanyService.selectCompany();
-        List<SuppImage> companyPhotos = suppImageService.selectListByType(ImageEnum.COMPANYHOME.getCode());
-        if (!CollectionUtils.isEmpty(companyPhotos)) {
-            suppCompany.setSuppImage(companyPhotos.get(0));
-        }else {
+        if (suppCompany == null) {
             SuppImage suppImage =new SuppImage();
             suppImage.setPath(HccConstant.DEFAULT_COMPANY_IMAGE);
-            suppCompany.setSuppImage(suppImage);
         }
         //其他信息
         List<SuppDictionary> supps = suppDictionaryService.selectList(DictionaryEnum.COMPANY_COMMON_INFO.getCode().toString());

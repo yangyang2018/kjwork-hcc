@@ -16,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id,name,code,path,type,order,version,create_time AS createTime ,modify_time AS modifyTime
+        id,name,code,path,type,order,version,create_time,modify_time
     </sql>
 
 

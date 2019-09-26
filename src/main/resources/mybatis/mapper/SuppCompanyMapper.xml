@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.kj.model.SuppCompany">
         <id column="id" property="id" />
         <result column="name" property="name" />
-        <result column="image_id" property="imageId" />
+        <result column="image_path" property="imagePath" />
         <result column="profile" property="profile" />
         <result column="version" property="version" />
         <result column="create_time" property="createTime" />
@@ -14,7 +14,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id,name,image_id as ImageId,profile,version,create_time AS createTime ,modify_time AS modifyTime
+        id,name,image_path,profile,version,create_time,modify_time
     </sql>
 
 

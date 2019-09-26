@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns:th="http://www.thymeleaf.org" th:fragment = "layoutFirst(title,links,styles,content,scripts)">
+<head >
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="杨先生的私人网页，仅供生活娱乐">
+  <meta name="author" content="杨先生">
+  <link rel="icon" th:href="@{${session.appServerUrl}+'image/favicon.ico'}" type="image/x-icon"/>
+  <link rel="shortcut  icon" th:href="@{${session.appServerUrl}+'image/favicon.ico'}" type="image/x-icon"/>
+  <!--<title th:replace="${title}">杭州顺达后台管理系统</title>-->
+  <title>杭州顺达后台管理系统</title>
+
+  <!--全局通用框架样式 begin-->
+  <!-- Custom fonts for this template-->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/fontawesome-free/css/all.min.css'}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link th:href="@{${session.appServerUrl}+'bops/css/sb-admin-2.min.css'}" rel="stylesheet">
+
+  <!--全局通用框架样式 end-->
+
+  <!--/* Per-page placeholder for additional links */-->
+  <th:block th:replace="${links}" />
+  <!--/* Per-page placeholder for additional styles */-->
+  <th:block th:replace="${styles}" />
+</head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{${session.appServerUrl}+'bops/index.action'}">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">后台管理 <sup>顺达</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link" th:href="@{${session.appServerUrl}+'bops/index.action'}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>首页</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      管理
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>用户管理</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">管理项:</h6>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/member-list.action'}">用户列表</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#companyUtilities" aria-expanded="true" aria-controls="companyUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>公司信息管理</span>
+      </a>
+      <div id="companyUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">管理项:</h6>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-info.action'}">基本信息</a>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-basic.action'}">其他信息</a>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-target.action'}">准则管理</a>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-service.action'}">服务管理</a>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-honour.action'}">荣誉管理</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>图片管理</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">管理项:</h6>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/company-image.action'}">公司图片管理</a>
+          <a class="collapse-item" th:href="@{${session.appServerUrl}+'bops/circle-image.action'}">轮播图片管理</a>
+        </div>
+      </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{${session.appServerUrl}+'bops/news.action'}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>新闻管理</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{${session.appServerUrl}+'bops/messages.action'}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>留言管理</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+  </ul>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <!-- Sidebar Toggle (Topbar) -->
+      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- Topbar Navbar -->
+      <ul class="navbar-nav ml-auto">
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">个人中心</span>
+            <img class="img-profile rounded-circle" th:src="@{${session.appServerUrl}+'bops/img/header.jpeg'}">
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:;" data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>登出
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div th:replace="${content}">
+        <p>content</p>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>版权所有 ©2019 杭州顺达</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">准备离开了吗?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">确定登出吗？</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+        <a id="btn-login-out" class="btn btn-primary"  href="javascript:;">登出</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{${session.appServerUrl}+'bops/vendor/jquery/jquery.min.js'}"></script>
+<script th:src="@{${session.appServerUrl}+'bops/vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+<!-- Core plugin JavaScript-->
+<script th:src="@{${session.appServerUrl}+'bops/vendor/jquery-easing/jquery.easing.min.js'}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{${session.appServerUrl}+'bops/js/sb-admin-2.min.js'}"></script>
+<script th:src="@{${session.appServerUrl}+'bops/js/constant.js'}"></script>
+<script th:src="@{${session.appServerUrl}+'bops/js/dialog.js'}"></script>
+<script th:src="@{${session.appServerUrl}+'bops/js/login-out.js'}"></script>
+
+<!-- Per scripts for custom pages-->
+<th:block th:replace="${scripts}" />
+
+<input type="hidden" th:value="${session.appServerUrl}" id="appServer"/>
+
+</body>
+
+</html>

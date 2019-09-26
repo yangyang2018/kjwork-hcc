@@ -16,6 +16,13 @@ public class SuppImage extends BaseSuppDO implements Serializable {
 
     private static final long serialVersionUID = 7478362491239920840L;
 
+    public SuppImage() {
+    }
+
+    public SuppImage(String path) {
+        this.path = path;
+    }
+
     @TableField
     private String name;
     @TableField

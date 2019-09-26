@@ -14,7 +14,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id,dic_no as dicNo,group_no as groupNo,name,remark,create_time AS createTime ,modify_time AS modifyTime
+        id,dic_no ,group_no,name,remark,create_time,modify_time
     </sql>
 
 

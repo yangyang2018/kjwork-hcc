@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="bops/layout/layoutFirst :: layoutFirst(~{},~{::link},~{},~{::section},~{::script})">
+
+<head>
+  <!--<title>杭州顺达后台管理系统</title>-->
+  <!-- Custom styles for this page -->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.css'}" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <div class="row">
+            <h1 class="h3 mb-2 text-gray-800" style="float: left;">首页轮播图片管理</h1><p class="mb-4" style="float: left;margin: 10px;">可以对轮播图片进行编辑</p>
+          </div>
+          <div class="row">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>路径</th>
+                <th>排序</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item,itemState : ${datas}">
+                <td th:text="${item.id}"></td>
+                <td>
+                  <form role="form">
+                    <div style="padding: 10px;margin: 0 auto;" class="row">
+                      <img th:src="|${session.appServerUrl}${item.path}|" width="400px" height="300px" class="img-change" style="margin: 0 auto;">
+                    </div>
+                    <div style="padding: 10px;margin: 0 auto;" class="row">
+                      <div style="margin: 0 auto;">
+                        <input type="file"  class="btn btn-info btn-preview" placeholder="预览" />
+                        <a href="javascript:;" class="btn btn-success btn-save">上传</a>
+                        <a href="javascript:;" class="btn btn-success btn-submit">保存</a>
+                      </div>
+                    </div>
+                  </form>
+                </td>
+                <td th:text="${item.order}"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Page level plugins -->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/chart.js/Chart.min.js'}"></script>
+  <!-- Page level custom scripts -->
+
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/jquery.dataTables.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.js'}"></script>
+
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/circle-image-list.js'}"></script>
+
+</body>
+</html>

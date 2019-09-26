@@ -1,5 +1,6 @@
 package com.kj.front.controller;
 
+import com.kj.comom.BaseResponse;
 import com.kj.comom.CommonResultResponse;
 import com.kj.constant.DictionaryEnum;
 import com.kj.constant.HccConstant;
@@ -43,24 +44,24 @@ public class ContactController {
 
     @RequestMapping("/ajax/submit/message.action")
     @ResponseBody
-    public CommonResultResponse submit(@RequestBody SuppMessage suppMessage){
+    public BaseResponse submit(@RequestBody SuppMessage suppMessage){
 
-        CommonResultResponse commonResultResponse = null;
+        BaseResponse baseResponse = null;
         //1.参数效验
         if (org.apache.commons.lang3.StringUtils.isBlank(suppMessage.getFirstname())) {
-            commonResultResponse =CommonResultResponse.buildFailure();
-            commonResultResponse.setResultInfo("姓不能为空");
-            return commonResultResponse;
+            baseResponse =BaseResponse.buildFail();
+            baseResponse.setResultInfo("姓不能为空");
+            return baseResponse;
         }
         if (org.apache.commons.lang3.StringUtils.isBlank(suppMessage.getLastname())) {
-            commonResultResponse =CommonResultResponse.buildFailure();
-            commonResultResponse.setResultInfo("名不能为空");
-            return commonResultResponse;
+            baseResponse =CommonResultResponse.buildFail();
+            baseResponse.setResultInfo("名不能为空");
+            return baseResponse;
         }
         if (org.apache.commons.lang3.StringUtils.isBlank(suppMessage.getPhone())) {
-            commonResultResponse =CommonResultResponse.buildFailure();
-            commonResultResponse.setResultInfo("联系电话不能为空");
-            return commonResultResponse;
+            baseResponse =CommonResultResponse.buildFail();
+            baseResponse.setResultInfo("联系电话不能为空");
+            return baseResponse;
         }
         //2.插入数据
         suppMessageService.insert(suppMessage);

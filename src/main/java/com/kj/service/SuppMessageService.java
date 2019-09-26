@@ -14,4 +14,10 @@ import java.util.List;
  */
 public interface SuppMessageService extends IService<SuppMessage> {
 
+    /**
+     * 更新消息的状态为已处理
+     * @param id
+     * @return
+     */
+    boolean updateStatus(Integer id);
 }

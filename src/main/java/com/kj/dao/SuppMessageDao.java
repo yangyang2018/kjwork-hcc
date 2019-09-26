@@ -2,6 +2,7 @@ package com.kj.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kj.model.SuppMessage;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author yangyang
@@ -10,4 +11,10 @@ import com.kj.model.SuppMessage;
  * @description
  */
 public interface SuppMessageDao extends BaseMapper<SuppMessage> {
+    /**
+     * 更新状态为已处理
+     * @param id
+     * @return
+     */
+    boolean updateStatus(@Param("id") Integer id);
 }

@@ -1,6 +1,9 @@
 package com.kj.comom;
 
+import org.springframework.boot.context.ConfigurationWarningsApplicationContextInitializer;
+
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
 
 /**
  * @author yangyang
@@ -66,5 +69,41 @@ public class BaseResponse implements Serializable{
 
     public void setResultInfo(String resultInfo) {
         this.resultInfo = resultInfo;
+    }
+
+    public static BaseResponse buildSuccess() {
+        BaseResponse response = new BaseResponse();
+        response.setSuccess(true);
+        response.setResultCode("0");
+        response.setResultInfo("操作成功");
+        return response;
+    }
+
+
+    public static BaseResponse buildFail(String resultInfo) {
+        BaseResponse response = new BaseResponse();
+        response.setSuccess(false);
+        response.setResultInfo(resultInfo);
+        return response;
+    }
+
+    public static BaseResponse buildFail() {
+        BaseResponse response = new BaseResponse();
+        response.setSuccess(false);
+        response.setResultInfo("操作失败");
+        return response;
+    }
+
+    public static void main(String[] args) {
+
+        try {
+            Constructor<?> constructor = ConfigurationWarningsApplicationContextInitializer.class.getDeclaredConstructor(new Class[]{});
+
+
+            System.out.println(constructor);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
     }
 }

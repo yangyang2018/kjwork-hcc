@@ -21,10 +21,8 @@ public class SuppCompany extends BaseSuppDO implements Serializable {
     private String name;
     @TableField
     private String profile;
-    @TableField(value = "image_id")
-    private Integer imageId;
-    @TableField(exist = false)
-    private SuppImage suppImage;
+    @TableField(value = "image_path")
+    private String imagePath;
 
     @TableField(exist = false)
     private SuppDictionary simplesDic;//简讯
@@ -56,20 +54,12 @@ public class SuppCompany extends BaseSuppDO implements Serializable {
         this.profile = profile;
     }
 
-    public Integer getImageId() {
-        return imageId;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
-    }
-
-    public SuppImage getSuppImage() {
-        return suppImage;
-    }
-
-    public void setSuppImage(SuppImage suppImage) {
-        this.suppImage = suppImage;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public SuppDictionary getSimplesDic() {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="bops/layout/layoutFirst :: layoutFirst(~{::title},~{::link},~{},~{::section},~{::script})">
+
+<head>
+  <title>杭州顺达后台管理系统</title>
+  <!-- Custom styles for this page -->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.css'}" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <div class="row">
+            <h1 class="h3 mb-2 text-gray-800" style="float: left;">新闻管理</h1><p class="mb-4" style="float: left;margin: 10px;">可以对新闻内容进行编辑</p>
+          </div>
+          <div class="row">
+            <button type=button class="btn btn-primary" id="add">发布新闻</button>
+            <form class="form-inline" style="margin: 0 auto;">
+              <div class="form-group">
+                <input type="text" class="form-control" id="title" placeholder="标题">
+              </div>
+              <button type=button class="btn btn-success" id="search"> 条 件 查 询 </button>
+              <button type=button class="btn btn-warning" id="clear"> 清 空 条 件 </button>
+            </form>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>序号</th>
+                <th>内容</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Page level plugins -->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/chart.js/Chart.min.js'}"></script>
+  <!-- Page level custom scripts -->
+
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/jquery.dataTables.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.js'}"></script>
+
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/news-list.js'}"></script>
+
+</body>
+</html>

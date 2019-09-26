@@ -19,19 +19,14 @@ public class SuppNews extends BaseSuppDO implements Serializable {
     @TableField
     private String title;
     @TableField
-    private String profile;
-    @TableField
     private String content;
     @TableField()
     private Integer order;
 
     @TableField(value = "author_id")
     private Integer authorId;
-    @TableField(value = "image_id")
-    private Integer imageId;
-
-    @TableField(exist = false)
-    private SuppImage suppImage;
+    @TableField(value = "image_path")
+    private String imagePath;
 
 
     public String getTitle() {
@@ -40,14 +35,6 @@ public class SuppNews extends BaseSuppDO implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
     }
 
     public String getContent() {
@@ -74,19 +61,12 @@ public class SuppNews extends BaseSuppDO implements Serializable {
         this.authorId = authorId;
     }
 
-    public Integer getImageId() {
-        return imageId;
+
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
-    }
-
-    public SuppImage getSuppImage() {
-        return suppImage;
-    }
-
-    public void setSuppImage(SuppImage suppImage) {
-        this.suppImage = suppImage;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

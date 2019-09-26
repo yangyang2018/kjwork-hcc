@@ -24,6 +24,7 @@ public class SharedValueInterceptor  implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         request.getSession().setAttribute("appServerUrl",appServerUrl);
+
         return true;
     }
 }

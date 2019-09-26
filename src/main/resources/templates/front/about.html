@@ -8,8 +8,8 @@
 			<div class="colorlib-about">
 				<div class="container">
 					<div class="row row-pb-lg">
-						<div class="col-md-6 animate-box">
-							<div class="video colorlib-video" th:style="@{'background-image:url('+${session.appServerUrl}+${company.suppImage.path}+');'}">
+						<div class="col-md-6 animate-box" >
+							<div class="video colorlib-video" th:style="@{'background-image:url('+${session.appServerUrl}+${company.imagePath}+');'}">
 							</div>
 						</div>
 						<div class="col-md-6 animate-box">
@@ -28,7 +28,7 @@
 								<div class="col-md-3 text-center animate-box" th:each="item,status : ${qualifications}">
 									<div class="pricing">
 										<h2 class="pricing-heading" th:text="${item.name}"></h2>
-										<p th:text="${item.remark}">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p th:text="${item.remark}" style="height: 200px;overflow: hidden;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 										<p><a href="javaScript:;" class="btn btn-primary">且行且珍惜</a></p>
 									</div>
 								</div>
@@ -46,8 +46,7 @@
 								<a href="javascript:;" class="staff-img" style="background-image: url(images/person1.jpg);"></a>
 								<div class="desc">
 									<h3 th:text="${item.name}"></h3>
-									<span th:text="${status.count}"></span>
-									<p th:text="${item.remark}"></p>
+									<p th:text="${item.remark}" style="height: 200px;overflow: hidden;"></p>
 								</div>
 							</div>
 						</div>

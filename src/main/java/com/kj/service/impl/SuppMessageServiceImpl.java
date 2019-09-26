@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.kj.dao.SuppMessageDao;
 import com.kj.model.SuppMessage;
 import com.kj.service.SuppMessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SuppMessageServiceImpl extends ServiceImpl<SuppMessageDao,SuppMessage> implements SuppMessageService {
 
+    @Autowired
+    SuppMessageDao suppMessageDao;
+
+    @Override
+    public boolean updateStatus(Integer id) {
+        return suppMessageDao.updateStatus(id);
+    }
 }

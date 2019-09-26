@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="bops/layout/layoutFirst :: layoutFirst(~{::title},~{::link},~{},~{::section},~{::script})">
+
+<head>
+  <title>杭州顺达后台管理系统</title>
+  <!-- Custom styles for this page -->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.css'}" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <input id="newsId" type="hidden" th:value="${newsId}" />
+      <!-- Page Heading -->
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label>上传图片比例建议是4/3</label>
+              <div>
+                <img  width="400px" height="300px" id="img-change" >
+              </div>
+              <div>
+                <div>
+                  <input type="file" id="preview" class="btn btn-info" placeholder="预览" >
+                  <a href="javascript:;" id="btn-save" class="btn btn-primary">上传</a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="title">标题</label>
+              <input id="title"  type="text" class="form-control" aria-describedby="titleHelp" placeholder="请输入标题">
+              <small id="titleHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="order">序号</label>
+              <input id="order"  type="number"  class="form-control" aria-describedby="orderHelp" placeholder="请输入序号">
+              <small id="orderHelp" class="form-text text-muted">序号越小,排序越靠前</small>
+            </div>
+            <div class="form-group">
+              <label for="order">文章内容</label>
+              <textarea id="newsContent" class="form-control" rows="16" style="min-width: 90%" placeholder="请输入文章内容"></textarea>
+            </div>
+            <button id="btn-submit" type="submit" class="btn btn-primary">保存</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Page level plugins -->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/chart.js/Chart.min.js'}"></script>
+  <!-- Page level custom scripts -->
+
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/jquery.dataTables.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.js'}"></script>
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/news-list.js'}"></script>
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/dialog.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/js/image-upload-util.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/js/news-publish.js'}"></script>
+
+</body>
+</html>

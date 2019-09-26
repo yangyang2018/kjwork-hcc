@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="bops/layout/layoutFirst :: layoutFirst(~{::title},~{::link},~{},~{::section},~{::script})">
+
+<head>
+  <title>杭州顺达后台管理系统</title>
+  <!-- Custom styles for this page -->
+  <link th:href="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.css'}" rel="stylesheet">
+</head>
+<body>
+  <section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">基本信息</h1>
+      <p class="mb-4">可以编辑公司名称/简介信息</p>
+      <input type="hidden" class="form-control" id="id" th:value="${suppCompany.id}" >
+      <!--form-->
+      <div class="card shadow mb-4">
+        <form role = "form">
+          <form role = "form">
+            <div class="form-group">
+              <label for="name">公司名称</label>
+              <input type="text" class="form-control" id="name" th:value="${suppCompany.name}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="profile">简介</label>
+              <textarea rows="10" class="form-control" id="profile" th:text="${suppCompany.profile}" disabled></textarea>
+            </div>
+
+            <div class="form-actions" style="float: right;">
+              <a href="#" id="btn-edit" class="btn btn-primary">
+                编辑
+              </a>
+              <a href="#" id="btn-cancel" class="btn btn-info">
+                取消
+              </a>
+              <a href="#" id="btn-save" class="btn btn-success">
+                保存
+              </a>
+             </div>
+           </form>
+        </form>
+      </div>
+
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Page level plugins -->
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/chart.js/Chart.min.js'}"></script>
+  <!-- Page level custom scripts -->
+
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/jquery.dataTables.min.js'}"></script>
+  <script th:src="@{${session.appServerUrl}+'bops/vendor/datatables/dataTables.bootstrap4.min.js'}"></script>
+
+  <script th:src="@{${session.appServerUrl}+'bops/js/company-info.js'}"></script>
+
+</body>
+</html>

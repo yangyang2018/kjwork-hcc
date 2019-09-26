@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="front/layout/layoutFirst :: layoutFirst(3,~{::title},~{},~{},~{::section},~{})">
+	<head>
+		<title>新闻中心</title>
+	</head>
+	<body>
+		<section>
+			<div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 animate-box">
+							<div class="work-grid">
+								<div class="desc">
+									<h2><a href="javaScript:;" th:text="${news.title}"></a><div style="float: right;"><p class="admin"><span th:text="${#dates.format(news.createTime, 'yyyy-MM-dd')}"></span></p></div></h2>
+									<p th:text="${news.content}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+

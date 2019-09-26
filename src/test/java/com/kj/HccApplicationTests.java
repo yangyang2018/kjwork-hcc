@@ -95,7 +95,8 @@ public class HccApplicationTests {
 		System.out.println(suppNewsPage.isSearchCount());
 
 		System.out.println(suppNewsPage.getTotal());
-		System.out.println(suppNewsPage.getPages());
+		System.out.println(suppNewsPage.getCurrent());
+		System.out.println(suppNewsPage.getRecords());
 
 	}
 

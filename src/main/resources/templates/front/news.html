@@ -10,12 +10,13 @@
 					<div class="row">
 						<div class="col-md-4 animate-box" th:each="item,itemState : ${news}">
 							<div class="work-grid">
-								<a href="javaScript:;" class="work-img" th:style="@{'background-image:url('+${session.appServerUrl}+${item.suppImage.path}+');'}">
+								<a th:href="@{${session.appServerUrl}+'front/news_detail.action?id='+${item.id}}" class="work-img" th:style="@{'background-image:url('+${session.appServerUrl}+${item.imagePath}+');'}">
 									<span class="icon"><i class="icon-plus2"></i></span>
 								</a>
 								<div class="desc">
-									<h2><a href="javaScript:;" th:text="${item.title}"></a></h2>
-									<p th:text="${item.profile}"></p>
+									<h2><a th:href="@{${session.appServerUrl}+'front/news_detail.action?id='+${item.id}}" th:text="${item.title}"></a></h2>
+									<p th:if="${#strings.length(item.content) >=150}" th:text="${#strings.substring(item.content,0,150)}" style="height: 150px;overflow: hidden;"></p>
+									<p th:if="${#strings.length(item.content) < 150}" th:text="${item.content}" style="height: 150px;overflow: hidden;"></p>
 								</div>
 							</div>
 						</div>
